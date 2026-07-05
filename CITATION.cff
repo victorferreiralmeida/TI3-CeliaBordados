@@ -1,0 +1,32 @@
+cff-version: 1.0.1
+message: Please cite this software using these metadata.
+title: Celia Bordados
+authors:
+  - family-names: Araujo Santos
+    given-names: Arthur Henrique
+  - family-names: Pereira
+    given-names: Eddie Christian
+  - family-names: Magalhães de Jesus
+    given-names: Lucas Jácome
+  - family-names: de Almeida
+    given-names: Victor Ferreira
+  - name-suffix: Professora
+    affiliation: PUC Minas
+    family-names: Alonso Veloso
+    given-names: Eveline
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Lacerda Marques
+    given-names: Ramon
+  - name-suffix: Professora
+    affiliation: PUC Minas
+    family-names: Ribeiro de Souza
+    given-names: Joana Gabriela
+keywords:
+  - sistema web
+  - gerenciamento
+  - bordados
+repository-code: https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-1-ti3-898110-grupo-5-celia-bordados
+license: CC-BY-4.0
+version: 1.0.0
+date-released: 2025-06-25
