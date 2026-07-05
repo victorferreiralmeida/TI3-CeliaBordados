@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="bordados, produtos bordados, mesa, banho, corporativo, uniformes, toalhas, panos de prato" />
+  <meta name="description" content="Acesse seu perfil de cliente para visualizar seus dados e gerenciar suas informações." />
+  <meta name="author" content="Célia Bordados" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <title>Perfil do Cliente</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <style>
+    .profile-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      background-color: #f16179;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+    }
+    
+    .profile-avatar i {
+      font-size: 40px;
+      color: white;
+    }
+    
+    .profile-name {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .profile-email {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    .profile-section {
+      margin-bottom: 30px;
+      padding: 20px 0;
+    }
+    
+    .profile-section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    
+    .profile-info-item {
+      margin-bottom: 15px;
+    }
+    
+    .profile-info-label {
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    
+    .profile-info-value {
+      background-color: #f9f9f9;
+      padding: 12px 15px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    
+    .btn-logout {
+      background-color: #f16179;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-logout:hover {
+      background-color: #e04d67;
+    }
+    
+    .btn-edit {
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-right: 10px;
+    }
+    
+    .btn-edit:hover {
+      background-color: #5a6268;
+    }
+    
+    .profile-buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+    
+    .heading_container {
+      margin-bottom: 40px;
+    }
+    
+    .edit-field {
+      margin-top: 10px;
+    }
+    
+    .edit-field input, .edit-field textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+    }
+    
+    .edit-field input:focus, .edit-field textarea:focus {
+      border-color: #f16179;
+      outline: none;
+      box-shadow: 0 0 5px rgba(241, 97, 121, 0.3);
+    }
+    
+    .edit-field textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .btn-save {
+      background-color: #f16179;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-right: 10px;
+    }
+    
+    .btn-save:hover {
+      background-color: #e04d67;
+    }
+    
+    .btn-save:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .btn-cancel {
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-right: 10px;
+    }
+    
+    .btn-cancel:hover {
+      background-color: #5a6268;
+    }
+    
+    .feedback-message {
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      display: none;
+      text-align: center;
+    }
+    
+    .feedback-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .feedback-error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* Estilos para o histórico de compras */
+    .purchase-history {
+      margin-top: 30px;
+    }
+    .purchase-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding: 0.7em 0.3em;
+      font-size: 15px;
+      background: none;
+      transition: background 0.2s;
+    }
+    .purchase-list-item:last-child {
+      border-bottom: none;
+    }
+    .purchase-list-date {
+      color: #666;
+      min-width: 110px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .purchase-list-status {
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0 10px;
+      min-width: 60px;
+      text-align: center;
+    }
+    .status-pending {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    .status-completed {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .status-cancelled {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .purchase-list-total {
+      font-weight: 600;
+      color: #333;
+      min-width: 120px;
+      text-align: right;
+    }
+    .btn-view {
+      background: #f16179;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: background 0.2s;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+    }
+    .btn-view i {
+      color: #fff;
+      font-size: 20px;
+      transition: color 0.2s;
+    }
+    .btn-view:hover {
+      background: #e04d67;
+    }
+    .btn-voltar {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #f16179;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* Modal de detalhes do pedido */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 60px auto;
+      padding: 30px 25px;
+      border-radius: 10px;
+      max-width: 600px;
+      min-width: 340px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      position: relative;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .close-modal {
+      color: #aaa;
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .close-modal:hover {
+      color: #f16179;
+    }
+    .modal-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: #333;
+    }
+    .modal-section {
+      margin-bottom: 15px;
+    }
+    .modal-section-title {
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    .modal-section-content {
+      background: #f9f9f9;
+      border-radius: 5px;
+      padding: 10px 12px;
+      font-size: 15px;
+    }
+    .modal-items-list {
+      margin-top: 10px;
+    }
+    .modal-item-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+    .modal-total {
+      font-weight: 600;
+      color: #333;
+      text-align: right;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    .no-purchases {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+      font-style: italic;
+    }
+
+    .status-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .status-title {
+      color: #f16179;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .order-info {
+      font-size: 0.95rem;
+      color: #333;
+    }
+    .delivery-date {
+      background-color: #fff6d3;
+      color: #444;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+      font-weight: 500;
+    }
+    .steps {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0 0 0;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 40px;
+      align-items: center;
+    }
+    .steps-labels {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 10px;
+      margin-top: 8px;
+    }
+    .step-label {
+      font-size: 15px;
+      color: #b0b0b0;
+      font-weight: 500;
+      text-align: center;
+      width: 40px;
+      flex: 1;
+      transition: color 0.3s;
+    }
+    .step.active-label .step-label {
+      color: #f16179;
+      font-weight: 600;
+    }
+    .steps-bg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 4px;
+      background: #eee;
+      z-index: 0;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .steps::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      width: 0;
+      height: 4px;
+      background: #f16179;
+      z-index: 0;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      background: transparent;
+    }
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-size: 20px;
+      background: #eee;
+      color: #b0b0b0;
+      border: 3px solid #eee;
+      transition: background 0.3s, color 0.3s, border 0.3s;
+      z-index: 1;
+    }
+    .step.completed .step-circle,
+    .step.active .step-circle {
+      background: #f16179;
+      color: #fff;
+      border: 3px solid #f16179;
+    }
+    .order-items {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    .order-items h5 {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .order-items ul {
+      list-style: none;
+      padding: 0;
+    }
+    .order-items li {
+      margin-bottom: 8px;
+    }
+    .btn-voltar {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #f16179;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* Modal de Avaliação (multi-produto) */
+    #modalAvaliacao .modal-content-custom {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      padding: 0;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+      max-width: 700px;
+      min-width: 340px;
+      overflow: hidden;
+      border: 3px solid #f16179;
+    }
+    #modalAvaliacao .modal-img-col {
+      flex: 1.1;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 0 24px 24px;
+      min-width: 180px;
+      min-height: 220px;
+    }
+    #modalAvaliacao .modal-img-col img {
+      max-width: 100%;
+      max-height: 180px;
+      border-radius: 12px;
+      border: 2px solid #f16179;
+      background: #fff;
+    }
+    #modalAvaliacao .modal-body-col {
+      flex: 2;
+      padding: 28px 32px 24px 24px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+    }
+    #modalAvaliacao .close-modal {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      font-size: 28px;
+      color: #f16179;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2;
+    }
+    #modalAvaliacao .modal-title {
+      color: #f16179;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    #modalAvaliacao .modal-prod-info {
+      background: #ffeaf0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      color: #444;
+    }
+    #modalAvaliacao .modal-prod-info b {
+      font-weight: 700;
+      color: #333;
+    }
+    #modalAvaliacao .modal-label {
+      font-weight: 600;
+      color: #444;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+    #modalAvaliacao .avaliacao-estrelas {
+      font-size: 2rem;
+      color: #f16179;
+      margin-bottom: 10px;
+      margin-top: 2px;
+      letter-spacing: 2px;
+    }
+    #modalAvaliacao .avaliacao-estrelas .estrela-avaliacao {
+      cursor: pointer;
+      font-size: 2.1rem;
+      color: #ccc;
+      transition: color 0.2s;
+    }
+    #modalAvaliacao .avaliacao-estrelas .estrela-avaliacao.selecionada {
+      color: #f16179;
+    }
+    #modalAvaliacao textarea {
+      width: 100%;
+      border-radius: 8px;
+      border: 1.5px solid #f16179;
+      padding: 12px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      margin-top: 2px;
+      resize: vertical;
+      min-height: 60px;
+      background: #fff;
+      color: #444;
+    }
+    #modalAvaliacao #enviarAvaliacaoBtn {
+      background: #f16179;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 0;
+      font-weight: 700;
+      font-size: 1.1rem;
+      width: 100%;
+      margin-top: 4px;
+      transition: background 0.2s;
+    }
+    #modalAvaliacao #enviarAvaliacaoBtn:hover {
+      background: #e04d67;
+    }
+    #modalAvaliacao #avaliacao-msg {
+      display: none;
+      color: #2ecc71;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+    @media (max-width: 700px) {
+      #modalAvaliacao .modal-content-custom {
+        flex-direction: column;
+        min-width: 0;
+        max-width: 98vw;
+      }
+      #modalAvaliacao .modal-img-col {
+        padding: 18px 0 0 0;
+        justify-content: center;
+      }
+      #modalAvaliacao .modal-body-col {
+        padding: 18px 10px 18px 10px;
+      }
+    }
+
+    #avaliacao-produtos-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 10px;
+    }
+    .avaliacao-produto-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      background: #ffeaf0;
+      border-radius: 10px;
+      padding: 16px 12px;
+    }
+    .avaliacao-produto-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #f16179;
+      background: #fff;
+    }
+    .avaliacao-produto-info {
+      flex: 1;
+    }
+    .avaliacao-produto-nome {
+      font-weight: bold;
+      color: #f16179;
+      font-size: 1.1rem;
+      margin-bottom: 2px;
+    }
+    .avaliacao-produto-label {
+      font-weight: 500;
+      margin-top: 4px;
+      margin-bottom: 2px;
+      color: #444;
+    }
+    .avaliacao-estrelas {
+      font-size: 1.7rem;
+      color: #f16179;
+      margin-bottom: 6px;
+      margin-top: 2px;
+      letter-spacing: 2px;
+    }
+    .estrela-avaliacao {
+      cursor: pointer;
+      font-size: 2rem;
+      color: #ccc;
+      transition: color 0.2s;
+    }
+    .estrela-avaliacao.selecionada {
+      color: #f16179;
+    }
+    .avaliacao-produto-comentario {
+      width: 100%;
+      border-radius: 7px;
+      border: 1.5px solid #f16179;
+      padding: 8px;
+      font-size: 1rem;
+      margin-top: 2px;
+      resize: vertical;
+      min-height: 40px;
+      background: #fff;
+      color: #444;
+    }
+    #enviarAvaliacaoBtn {
+      background: #f16179;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 0;
+      font-weight: 700;
+      font-size: 1.1rem;
+      width: 100%;
+      margin-top: 4px;
+      transition: background 0.2s;
+    }
+    #enviarAvaliacaoBtn:hover {
+      background: #e04d67;
+    }
+    #avaliacao-msg {
+      display: none;
+      color: #2ecc71;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/celiabordadoslogo.png" alt="Célia Bordados Logo" class="logo-img">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""></span>
+          </button>
+
+          <div class="collapse navbar-collapse innerpage_navbar" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">INÍCIO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Vitrine</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="why.html">Sobre Nós</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contato</a>
+              </li>
+            </ul>
+            <div class="user_option">
+              <a href="https://wa.me/5531988116773" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- profile section -->
+  <section class="profile-section layout_padding">
+    <div class="container">
+    
+      
+      <div class="profile-container">
+        <div id="feedback-message" class="feedback-message"></div>
+        
+        <div class="profile-header">
+          <div class="container">
+          <div class="status-container">
+            <a href="cliente-perfil.html" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <div class="status-title">Acompanhar Status do Pedido</div>
+            <div class="status-header">
+              <div>
+                <div><strong>Pedido:</strong>
+                <span class="pedido-info" id="pedido-info">Carregando...</span></div>
+              </div>
+              <div>
+                <div><strong>Data:</strong>
+                <span class="data-info" id="data-info">Carregando...</span></div>
+              </div>
+              <div>
+                <div><strong>Total:</strong>
+                <span class="total-info" id="total-info">Carregando...</span></div>
+              </div>
+            </div>
+            <div class="delivery-date">
+              <i class="fas fa-calendar-alt"></i> Data aproximada de entrega: 
+              <strong><span class="data-prevista" id="data-prevista">Carregando...</span></strong>
+            </div>
+            <div class="steps" id="status-steps">
+              <div class="steps-bg"></div>
+              <!-- Os status serão inseridos dinamicamente pelo JS -->
+            </div>
+            <div class="order-items">
+              <h5>Itens do Pedido</h5>
+              <ul class="itens-info" id="itens-info">
+                <li>Carregando...</li>        
+              </ul>
+              <div id="avaliar-pedido-container" style="text-align:center; margin-top:20px;"></div>
+            </div>
+          </div>
+        </div>        
+        </div>
+      
+        </div>
+             
+      </div>
+      
+    </div>
+  </section>
+  <!-- end profile section -->
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="info_logo">
+        <h2>Célia Bordados</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Sobre Nós</h5>
+          <p>Somos especializados em bordados personalizados para diversas ocasiões. Nossos produtos são feitos com muito carinho e atenção aos detalhes.</p>
+        </div>
+        <div class="col-md-3">
+          <h5>Produtos</h5>
+          <ul>
+            <li><a href="shop.html">Toalhas Bordadas</a></li>
+            <li><a href="shop.html">Panos de Prato</a></li>
+            <li><a href="shop.html">Kits para Bebê</a></li>
+            <li><a href="shop.html">Uniformes</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Links Úteis</h5>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="shop.html">Vitrine</a></li>
+            <li><a href="why.html">Sobre Nós</a></li>
+            <li><a href="contact.html">Contato</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <div class="social_box">
+            <h5>Siga-nos</h5>
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5531988116773"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>&copy; <span id="displayYear"></span> Todos os direitos reservados | Célia Bordados</p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.js"></script>
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
+  <!-- API js -->
+  <script src="js/api.js"></script>
+  <script>
+
+    
+    // Exibir ano atual no footer
+    document.getElementById("displayYear").textContent = new Date().getFullYear();
+    
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const pedidoId = urlParams.get('pedidoId');
+
+    function buscarHistoricoCompras(userData) {
+        console.log('Iniciando busca do pedido:', pedidoId);
+        console.log('UserData:', userData);
+        
+        // Verificar se temos o token
+        if (!userData || !userData.token) {
+            console.error('Token não encontrado');
+            return;
+        }
+
+        // Construir a URL da API - Corrigindo o endpoint
+        const apiUrl = `${API_BASE_URL}/pedidos/${pedidoId}`;
+        console.log('URL da API:', apiUrl);
+        
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${userData.token}`
+          }
+        })
+        .then(response => {
+          console.log('Response status:', response.status);
+          if (!response.ok) {
+            return response.text().then(text => {
+              console.error('Resposta da API:', text);
+              throw new Error(`Erro ao buscar dados do pedido: ${response.status} - ${text}`);
+            });
+          }
+          return response.json();
+        })
+        .then(pedido => {
+          window.__ultimoPedidoExibido = pedido;
+          console.log('Dados do pedido recebidos:', pedido);
+          
+          // Atualizar informações do pedido
+          const pedidoInfo = document.getElementById("pedido-info");
+          const dataInfo = document.getElementById("data-info");
+          const totalInfo = document.getElementById("total-info");
+          
+          console.log('Elementos DOM:', { pedidoInfo, dataInfo, totalInfo });
+          
+          if (pedidoInfo) {
+              pedidoInfo.textContent = `#${pedido.id}`;
+              console.log('Pedido atualizado:', pedidoInfo.textContent);
+          }
+          if (dataInfo) {
+              dataInfo.textContent = new Date(pedido.dataPedido).toLocaleDateString('pt-BR');
+              console.log('Data atualizada:', dataInfo.textContent);
+          }
+          if (totalInfo) {
+              totalInfo.textContent = `R$ ${pedido.total.toFixed(2)}`;
+              console.log('Total atualizado:', totalInfo.textContent);
+          }
+          
+          // Atualizar lista de itens
+          const itensList = document.getElementById("itens-info");
+          if (itensList && pedido.itens) {
+            itensList.innerHTML = pedido.itens.map(item => 
+              `<li>${item.produto.nome} – ${item.quantidade}x – R$ ${(item.precoUnitario * item.quantidade).toFixed(2)}</li>`
+            ).join('');
+          }
+
+          // Calcular data prevista de entrega (20 dias após dataPedido)
+          const dataPrevistaElem = document.getElementById("data-prevista");
+          if (dataPrevistaElem && pedido.dataPedido) {
+              const dataPedido = new Date(pedido.dataPedido);
+              dataPedido.setDate(dataPedido.getDate() + 20);
+              dataPrevistaElem.textContent = dataPedido.toLocaleDateString('pt-BR');
+          }
+
+          // Atualizar status visual
+          renderizarStatusPedido(pedido.status);
+          // Renderizar botão de avaliação se status for ENTREGUE
+          renderizarBotaoAvaliacao(pedido);
+        })
+        .catch(error => {
+          console.error('Erro detalhado:', error);
+          const pedidoInfo = document.getElementById("pedido-info");
+          const dataInfo = document.getElementById("data-info");
+          const totalInfo = document.getElementById("total-info");
+          const itensList = document.getElementById("itens-info");
+          
+          if (pedidoInfo) pedidoInfo.textContent = "Erro ao carregar";
+          if (dataInfo) dataInfo.textContent = "Erro ao carregar";
+          if (totalInfo) totalInfo.textContent = "Erro ao carregar";
+          if (itensList) itensList.innerHTML = "<li>Erro ao carregar itens</li>";
+        });
+    }
+
+    function renderizarStatusPedido(status) {
+      const stepsContainer = document.getElementById('status-steps');
+      if (!stepsContainer) return;
+      let steps = [];
+      let activeIndex = 0;
+      if (status === 'EM_PRODUCAO') {
+        steps = [
+          { icon: 'fas fa-spinner', label: 'Em produção' },
+          { icon: 'fas fa-truck', label: 'Em transporte' },
+          { icon: 'fas fa-check', label: 'Entregue' }
+        ];
+        activeIndex = 0;
+      } else if (status === 'ENVIADO') {
+        steps = [
+          { icon: 'fas fa-spinner', label: 'Em produção' },
+          { icon: 'fas fa-truck', label: 'Em transporte' },
+          { icon: 'fas fa-check', label: 'Entregue' }
+        ];
+        activeIndex = 1;
+      } else if (status === 'ENTREGUE') {
+        steps = [
+          { icon: 'fas fa-spinner', label: 'Em produção' },
+          { icon: 'fas fa-truck', label: 'Em transporte' },
+          { icon: 'fas fa-check', label: 'Entregue' }
+        ];
+        activeIndex = 2;
+      } else {
+        steps = [
+          { icon: 'fas fa-spinner', label: 'Em produção' },
+          { icon: 'fas fa-truck', label: 'Em transporte' },
+          { icon: 'fas fa-check', label: 'Entregue' }
+        ];
+        activeIndex = -1;
+      }
+      // Renderiza apenas os círculos
+      stepsContainer.innerHTML = `<div class="steps-bg"></div>` +
+        steps.map((step, idx) => `
+          <div class="step${idx === activeIndex ? ' active' : ''}${idx < activeIndex ? ' completed' : ''}">
+            <div class="step-circle"><i class="${step.icon}"></i></div>
+          </div>
+        `).join('');
+      // Renderiza os labels abaixo
+      let labelsHtml = steps.map((step, idx) =>
+        `<div class=\"step-label${idx <= activeIndex ? '\" style=\"color:#f16179;font-weight:600;\"' : '\"'}>${step.label}</div>`
+      ).join('');
+      let labelsContainer = stepsContainer.nextElementSibling;
+      if (!labelsContainer || !labelsContainer.classList.contains('steps-labels')) {
+        labelsContainer = document.createElement('div');
+        labelsContainer.className = 'steps-labels';
+        stepsContainer.parentNode.insertBefore(labelsContainer, stepsContainer.nextSibling);
+      }
+      labelsContainer.innerHTML = labelsHtml;
+
+      // Ajustar a linha rosa de progresso
+      setTimeout(() => {
+        const stepsDiv = stepsContainer.querySelectorAll('.step');
+        if (stepsDiv.length < 2) return;
+        const stepsElem = stepsContainer;
+        const firstCircle = stepsDiv[0].querySelector('.step-circle');
+        const activeCircle = stepsDiv[activeIndex].querySelector('.step-circle');
+        const lastCircle = stepsDiv[stepsDiv.length - 1].querySelector('.step-circle');
+        const stepsRect = stepsElem.getBoundingClientRect();
+        const firstRect = firstCircle.getBoundingClientRect();
+        const activeRect = activeCircle.getBoundingClientRect();
+        const lastRect = lastCircle.getBoundingClientRect();
+        let right;
+        if (activeIndex < stepsDiv.length - 1) {
+          // Linha vai até o ponto médio entre o centro do círculo atual e o centro do próximo círculo
+          const nextCircle = stepsDiv[activeIndex + 1].querySelector('.step-circle');
+          const nextRect = nextCircle.getBoundingClientRect();
+          const nextCenter = (nextRect.left + nextRect.width/2) - stepsRect.left;
+          const activeCenter = (activeRect.left + activeRect.width/2) - stepsRect.left;
+          right = activeCenter + (nextCenter - activeCenter) / 2;
+        } else {
+          // Último status: linha vai até o centro do último círculo
+          right = (lastRect.left + lastRect.width/2) - stepsRect.left;
+        }
+        const lastRight = (lastRect.left + lastRect.width/2) - stepsRect.left;
+        // Ajusta o ::after da .steps (linha rosa)
+        const progressStart = firstRect.left + firstRect.width/2 - stepsRect.left;
+        stepsElem.style.setProperty('--progress-left', progressStart + 'px');
+        stepsElem.style.setProperty('--progress-width', (right - progressStart) + 'px');
+        // Ajusta a linha cinza de fundo (do final da linha rosa até o centro do último círculo)
+        const bgLine = stepsElem.querySelector('.steps-bg');
+        if (bgLine) {
+          bgLine.style.left = right + 'px';
+          bgLine.style.width = (lastRight - right) + 'px';
+        }
+        // Remove estilos antigos
+        let styleSheet = document.getElementById('steps-progress-style');
+        if (styleSheet) styleSheet.remove();
+        styleSheet = document.createElement('style');
+        styleSheet.id = 'steps-progress-style';
+        styleSheet.innerHTML = `.steps::after { left: var(--progress-left, 0px); width: var(--progress-width, 0px); }`;
+        document.head.appendChild(styleSheet);
+      }, 10);
+    }
+
+    // Função para renderizar botão de avaliação se status for ENTREGUE
+    function renderizarBotaoAvaliacao(pedido) {
+      const container = document.getElementById('avaliar-pedido-container');
+      if (!container) return;
+      const avaliacoes = JSON.parse(localStorage.getItem('avaliacoesPedidos') || '{}');
+      const statusAvaliado = avaliacoes[pedido.id]?.avaliado === true;
+      if (pedido.status === 'ENTREGUE' && !statusAvaliado) {
+        container.innerHTML = `<button id="btnAvaliarPedido" style="background:#f16179; color:#fff; border:none; border-radius:8px; padding:10px 24px; font-weight:600;">Avaliar Pedido</button><div style='margin-top:10px;color:#f16179;font-weight:500;'>Conta pra gente como foi sua experiência!</div>`;
+        document.getElementById('btnAvaliarPedido').onclick = function() {
+          abrirModalAvaliacao(pedido.id);
+        };
+      } else if (pedido.status === 'ENTREGUE' && statusAvaliado) {
+        container.innerHTML = `<div style='color:#2ecc71; font-weight:600;'>Obrigado por avaliar este pedido!</div>`;
+      } else {
+        container.innerHTML = '';
+      }
+    }
+
+    // Função para abrir modal de avaliação (multi-produto)
+    function abrirModalAvaliacao(pedidoId) {
+      const pedido = window.__ultimoPedidoExibido;
+      if (!pedido || !pedido.itens) return;
+      
+      const produtos = pedido.itens.map((item, idx) => {
+        const produtoId = item.produto?.id;
+        if (produtoId == null || produtoId <= 0) { // Verificar se o ID do produto é válido
+            console.error('Produto sem ID válido no item do pedido:', item);
+            // Podemos pular este item ou tratá-lo como erro. Por enquanto, vamos pular.
+            return null; 
+        }
+
+        return {
+          idx,
+          nome: item.produto?.nome || 'Produto',
+          imagem: item.produto?.imagemUrl || item.produto?.imagem || item.produto?.urlImagem || item.produto?.imagem_url || 'images/celiabordadoslogo.png',
+          produtoId: produtoId, // Usar o ID real do produto
+          quantidade: item.quantidade
+        };
+      }).filter(prod => prod !== null); // Filtrar itens nulos (sem ID válido)
+
+      if (produtos.length === 0) {
+          console.error('Nenhum produto válido encontrado no pedido para avaliação.');
+          alert('Não foi possível carregar os produtos para avaliação. Tente novamente.');
+          return;
+      }
+
+      // Renderizar lista de produtos
+      const listDiv = document.getElementById('avaliacao-produtos-list');
+      listDiv.innerHTML = produtos.map(prod => `
+        <div class='avaliacao-produto-box' data-produto-idx='${prod.idx}'>
+          <img class='avaliacao-produto-img' src='${prod.imagem}' alt='${prod.nome}' />
+          <div class='avaliacao-produto-info'>
+            <div class='avaliacao-produto-nome'>${prod.nome}</div>
+            <div class='avaliacao-produto-label'>Sua Avaliação:</div>
+            <div class='avaliacao-estrelas' id='estrelas-produto-${prod.idx}'>
+              ${[1,2,3,4,5].map(i => `<span class='estrela-avaliacao' data-estrela='${i}' data-produto-idx='${prod.idx}'>&#9733;</span>`).join('')}
+            </div>
+            <div class='avaliacao-produto-label'>Seu Comentário:</div>
+            <textarea class='avaliacao-produto-comentario' id='comentario-produto-${prod.idx}' placeholder='Conte-nos sua experiência com o produto...'></textarea>
+          </div>
+        </div>
+      `).join('');
+      // Resetar estrelas e comentários
+      produtos.forEach(prod => renderizarEstrelasProduto(prod.idx, 0));
+      // Eventos de clique nas estrelas
+      document.querySelectorAll('.estrela-avaliacao').forEach(el => {
+        el.onclick = function() {
+          renderizarEstrelasProduto(Number(this.dataset.produtoIdx), Number(this.dataset.estrela));
+        };
+      });
+      // Resetar mensagem
+      document.getElementById('avaliacao-msg').style.display = 'none';
+      // Evento de submit
+      document.getElementById('form-avaliacoes-produtos').onsubmit = function(e) {
+        e.preventDefault();
+        enviarAvaliacoesProdutos(pedidoId, produtos);
+      };
+      document.getElementById('modalAvaliacao').style.display = 'block';
+    }
+    // Renderizar estrelas para um produto
+    function renderizarEstrelasProduto(idx, selecionadas) {
+      document.querySelectorAll(`#estrelas-produto-${idx} .estrela-avaliacao`).forEach((el, i) => {
+        if (i < selecionadas) el.classList.add('selecionada');
+        else el.classList.remove('selecionada');
+      });
+    }
+    // Enviar avaliações de todos os produtos
+    function enviarAvaliacoesProdutos(pedidoId, produtos) {
+      console.log('Produtos no modal:', produtos); // Log 1
+      let avaliacoes = JSON.parse(localStorage.getItem('avaliacoesPedidos') || '{}');
+      let todasPreenchidas = true;
+      
+      const avals = [];
+      const produtoBoxes = document.querySelectorAll('#avaliacao-produtos-list .avaliacao-produto-box');
+
+      if (produtoBoxes.length === 0) {
+          console.error('Nenhum produto encontrado no modal para avaliação.');
+          alert('Erro interno ao processar avaliações. Tente novamente.');
+          return;
+      }
+
+      produtoBoxes.forEach((box, index) => {
+          const produtoIdx = Number(box.dataset.produtoIdx);
+          // Encontrar o produto original na lista 'produtos' usando produtoIdx
+          const prodOriginal = produtos.find(p => p.idx === produtoIdx);
+          
+          if (!prodOriginal) {
+              console.error('Produto original não encontrado para index:', produtoIdx);
+              todasPreenchidas = false; // Considerar como não preenchido se não encontrar o produto original
+              return; // Pular este item se não encontrar o produto original (embora improvável)
+          }
+
+          const estrelas = box.querySelectorAll('.estrela-avaliacao.selecionada').length;
+          const comentario = box.querySelector('.avaliacao-produto-comentario').value.trim();
+          
+          console.log(`Coletando dados para produto [${index}] com idx ${produtoIdx}:`, { // Log 2
+              produtoId: prodOriginal.produtoId,
+              estrelas: estrelas,
+              comentario: comentario
+          });
+
+          if (estrelas === 0) todasPreenchidas = false;
+          
+          avals.push({
+              produtoId: prodOriginal.produtoId,
+              nome: prodOriginal.nome,
+              nota: estrelas,
+              comentario,
+              data: new Date().toISOString()
+          });
+      });
+
+      console.log('Array de avaliações a ser enviado:', avals); // Log 3
+
+      if (!todasPreenchidas) {
+        alert('Por favor, avalie todos os produtos (selecione as estrelas).');
+        return;
+      }
+
+      // Obter dados do usuário da sessão
+      const userData = SessionManager.obterCliente();
+      if (!userData || !userData.token) {
+        alert('Erro: Usuário não está logado. Por favor, faça login novamente.');
+        return;
+      }
+
+      // Enviar avaliações para o backend
+      fetch(`${API_BASE_URL}/avaliacoes/pedido/${pedidoId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userData.token}`
+        },
+        body: JSON.stringify({
+          pedidoId: pedidoId,
+          avaliacoes: avals
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao enviar avaliações para o servidor');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Salvar no localStorage após sucesso no backend
+        avaliacoes[pedidoId] = { avaliado: true, avals };
+        localStorage.setItem('avaliacoesPedidos', JSON.stringify(avaliacoes));
+        
+        document.getElementById('avaliacao-msg').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('modalAvaliacao').style.display = 'none';
+          renderizarBotaoAvaliacao({id: pedidoId, status: 'ENTREGUE'});
+        }, 1200);
+      })
+      .catch(error => {
+        console.error('Erro ao enviar avaliações:', error);
+        alert('Erro ao enviar avaliações. Por favor, tente novamente.');
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log('DOM Content Loaded');
+      const userData = SessionManager.obterCliente();
+      console.log('UserData da sessão:', userData);
+      
+      if (!userData) {
+          console.error('Usuário não está logado');
+          window.location.href = 'login.html';
+          return;
+      }
+      
+      if (!pedidoId) {
+          console.error('ID do pedido não encontrado na URL');
+          window.location.href = 'cliente-perfil.html';
+          return;
+      }
+      
+      console.log('Iniciando busca com pedidoId:', pedidoId);
+      buscarHistoricoCompras(userData);
+    });
+
+  
+  </script>
+
+  <!-- Modal de Avaliação (multi-produto) -->
+  <div id="modalAvaliacao" class="modal">
+    <div class="modal-content modal-content-custom" style="position:relative; max-width:700px;">
+      <span class="close-modal" id="closeModalAvaliacao">&times;</span>
+      <div class="modal-body-col" style="width:100%;">
+        <div class="modal-title">Avaliar Produtos do Pedido</div>
+        <form id="form-avaliacoes-produtos">
+          <div id="avaliacao-produtos-list"></div>
+          <button type="submit" id="enviarAvaliacaoBtn" style="margin-top:18px;">Enviar Avaliações</button>
+          <div id="avaliacao-msg">Avaliações enviadas com sucesso!</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

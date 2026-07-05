@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <!-- Site Metas -->
+  <meta name="keywords"
+        content="bordados, produtos bordados, mesa, banho, corporativo, uniformes, toalhas, panos de prato"/>
+  <meta name="description"
+        content="Confira nossa linha de bordados personalizados: toalhas, panos de prato, uniformes e muito mais. Produtos artesanais feitos com carinho."/>
+  <meta name="author" content="Célia Bordados"/>
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <title>Vitrine</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet"/>
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet"/>
+  <!-- page backgrounds -->
+  <link href="css/page-backgrounds.css" rel="stylesheet"/>
+</head>
+
+<body>
+<!-- Div de fundo específica para a página de vitrine -->
+<div class="page-background shop-background"></div>
+
+<div class="hero_area shop-page">
+  <!-- header section strats -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/celiabordadoslogo.png" alt="Célia Bordados Logo" class="logo-img">
+        </a>
+        <div class="user-actions-container">
+          <a href="cart.html" class="cart-btn">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+          <a href="login.html" class="admin-login-btn">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""></span>
+        </button>
+
+        <div class="collapse navbar-collapse innerpage_navbar" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">INÍCIO</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="shop.html">Vitrine <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="why.html">Sobre Nós</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contato</a>
+            </li>
+          </ul>
+          <div class="user_option">
+            <a href="https://wa.me/5531988116773" class="whatsapp-btn">
+              <i class="fab fa-whatsapp"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- end header section -->
+</div>
+
+<!-- shop section -->
+<section class="shop_section layout_padding shop-page-shop">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>Nossa Vitrine</h2>
+      <p>
+        Aqui você encontra alguns exemplares dos nossos trabalhos. Cada peça é única e personalizada de acordo
+        com seu desejo.
+        Entre em contato conosco para criar sua peça exclusiva!
+      </p>
+    </div>
+    <div class="row">
+      <!-- Os produtos serão carregados aqui dinamicamente -->
+    </div>
+    <div class="text-center mt-5">
+      <a href="https://wa.me/5531988116773" class="orcamento-btn">
+        <i class="fab fa-whatsapp"></i> Solicite seu orçamento personalizado
+      </a>
+    </div>
+  </div>
+  <div id="popup-carrinho" class="popup-carrinho">
+    <div class="popup-conteudo">
+      <span class="fechar-popup" onclick="fecharPopup()">&times;</span>
+      <p id="mensagem-popup"></p>
+      <div class="popup-botoes">
+        <button id="ir-para-carrinho">Ir para o Carrinho</button>
+        <button id="continuar-comprando" onclick="fecharPopup()">Continuar Comprando</button>
+      </div>
+    </div>
+    <div id="popup-2" class="popup-2">Produto adicionado ao carrinho!</div>
+  </div>
+</section>
+<!-- end shop section -->
+
+<!-- info section -->
+<section class="info_section layout_padding2">
+  <div class="container">
+    <div class="info_logo">
+      <h2>Célia Bordados</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="info_contact">
+          <h5>Contato</h5>
+          <div>
+            <div class="img-box">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <p><a href="https://wa.me/5531988116773" class="whatsapp-link">(31) 98811-6773</a></p>
+          </div>
+          <div>
+            <div class="img-box">
+              <i class="far fa-envelope"></i>
+            </div>
+            <p>celiabordadosbh@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="info_links">
+          <h5>Links Rápidos</h5>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="shop.html">Vitrine</a></li>
+            <li><a href="why.html">Sobre Nós</a></li>
+            <li><a href="contact.html">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="info_social">
+          <h5>Redes Sociais</h5>
+          <div class="social_container">
+            <div class="social-box">
+              <a href="https://www.facebook.com/CeliaBordadosBH"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.instagram.com/celiabordadosbh/"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end info section -->
+
+<!-- footer section -->
+<footer class="footer_section">
+  <div class="container-fluid">
+    <p>&copy; 2025 Todos os direitos reservados. Célia Bordados</p>
+  </div>
+</footer>
+<!-- footer section -->
+
+<!-- jQery -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+<script src="js/api.js"></script>
+<script src="js/produtos.js"></script>
+
+<script>
+  function mostrarPopup(mensagem) {
+    // popup grande
+    const popup = document.getElementById('popup-carrinho');
+    const mensagemPopup = document.getElementById('mensagem-popup');
+    mensagemPopup.textContent = mensagem;
+    popup.classList.add('mostrar');
+
+    // popup toasty
+    const toast = document.getElementById('popup-2');
+    toast.textContent = mensagem;
+    toast.classList.add('mostrar');
+
+    setTimeout(() => {
+      toast.classList.remove('mostrar');
+    }, 6000);
+  }
+
+  function fecharPopup() {
+    const popup = document.getElementById('popup-carrinho');
+    popup.classList.remove('mostrar');
+  }
+
+  document.getElementById('ir-para-carrinho').addEventListener('click', () => {
+    window.location.href = 'cart.html';
+  });
+
+  // Fecha o popup ao clicar fora dele
+  window.addEventListener('click', (e) => {
+    const popup = document.querySelector('.popup');
+    if (e.target === popup) {
+      popup.classList.remove('active');
+    }
+  });
+</script>
+
+<!-- Modal de Detalhes do Produto -->
+<div class="modal fade" id="modalDetalhesProduto" tabindex="-1" role="dialog" aria-labelledby="modalDetalhesProdutoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md modal-dialog-centered" role="document" style="max-width: 950px;">
+    <div class="modal-content" style="background: #fff; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.2);">
+      <div class="modal-header" style="border-bottom: none; padding: 20px 24px 0px 24px;">
+        <h2 class="modal-title w-100 text-center" id="modalDetalhesProdutoLabel" style="color: #000; font-size: 2.5rem; font-weight: bold;">Nome do Produto</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" style="position: absolute; top: 12px; right: 12px; font-size: 1.5rem;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding: 24px;">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Coluna da Esquerda: Imagem, descrição, preço e botão -->
+            <div class="col-md-6 d-flex flex-column align-items-center justify-content-center" style="padding-right: 20px; border-right: 1px solid #eee;">
+              <img id="modalProdutoImagem" src="" alt="Imagem do Produto" class="img-fluid mb-3" style="max-height: 250px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+              <p id="modalProdutoDescricao" class="text-center text-secondary mb-3"></p>
+              <p class="font-weight-bold" style="color: #333; font-size: 1.3rem;">Preço: R$ <span id="modalProdutoPreco"></span></p>
+              <button id="btnAdicionarAoCarrinhoModal" class="btn btn-primary" style="background-color: #f16179; border-color: #f16179; color: white; padding: 10px 20px; border-radius: 5px; font-size: 1.1rem; margin-top: 15px;">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Coluna da Direita: Avaliações e comentários -->
+            <div class="col-md-6" style="padding-left: 20px;">
+              <h6 class="mb-3" style="color: #333; font-weight: bold;">Avaliações e Comentários</h6>
+              <div id="modalProdutoComentarios" style="max-height: 550px; overflow-y: auto; padding-right: 5px;">
+                <!-- Comentários serão carregados aqui -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fim do Modal de Detalhes do Produto -->
+
+</body>
+
+</html>

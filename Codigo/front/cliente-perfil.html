@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="bordados, produtos bordados, mesa, banho, corporativo, uniformes, toalhas, panos de prato" />
+  <meta name="description" content="Acesse seu perfil de cliente para visualizar seus dados e gerenciar suas informações." />
+  <meta name="author" content="Célia Bordados" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <title>Perfil do Cliente</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <style>
+    .profile-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      background-color: #f16179;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+    }
+    
+    .profile-avatar i {
+      font-size: 40px;
+      color: white;
+    }
+    
+    .profile-name {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .profile-email {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    .profile-section {
+      margin-bottom: 30px;
+      padding: 20px 0;
+    }
+    
+    .profile-section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    
+    .profile-info-item {
+      margin-bottom: 15px;
+    }
+    
+    .profile-info-label {
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    
+    .profile-info-value {
+      background-color: #f9f9f9;
+      padding: 12px 15px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    
+    .btn-logout {
+      background-color: #f16179;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-logout:hover {
+      background-color: #e04d67;
+    }
+    
+    .btn-edit {
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-right: 10px;
+    }
+    
+    .btn-edit:hover {
+      background-color: #5a6268;
+    }
+    
+    .profile-buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+    
+    .heading_container {
+      margin-bottom: 40px;
+    }
+    
+    .edit-field {
+      margin-top: 10px;
+    }
+    
+    .edit-field input, .edit-field textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+    }
+    
+    .edit-field input:focus, .edit-field textarea:focus {
+      border-color: #f16179;
+      outline: none;
+      box-shadow: 0 0 5px rgba(241, 97, 121, 0.3);
+    }
+    
+    .edit-field textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .btn-save {
+      background-color: #f16179;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-right: 10px;
+    }
+    
+    .btn-save:hover {
+      background-color: #e04d67;
+    }
+    
+    .btn-save:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .btn-cancel {
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-right: 10px;
+    }
+    
+    .btn-cancel:hover {
+      background-color: #5a6268;
+    }
+    
+    .feedback-message {
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      display: none;
+      text-align: center;
+    }
+    
+    .feedback-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .feedback-error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* Estilos para o histórico de compras */
+    .purchase-history {
+      margin-top: 30px;
+    }
+    .purchase-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding: 0.7em 0.3em;
+      font-size: 15px;
+      background: none;
+      transition: background 0.2s;
+    }
+    .purchase-list-item:last-child {
+      border-bottom: none;
+    }
+    .purchase-list-date {
+      color: #666;
+      min-width: 110px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .purchase-list-status {
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0 10px;
+      min-width: 60px;
+      text-align: center;
+    }
+    .status-pending {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    .status-completed {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .status-cancelled {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .purchase-list-total {
+      font-weight: 600;
+      color: #333;
+      min-width: 120px;
+      text-align: right;
+    }
+    .btn-view {
+      background: #f16179;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: background 0.2s;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+    }
+    .btn-view i {
+      color: #fff;
+      font-size: 20px;
+      transition: color 0.2s;
+    }
+    .btn-view:hover {
+      background: #e04d67;
+    }
+
+    /* Modal de detalhes do pedido */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 60px auto;
+      padding: 30px 25px;
+      border-radius: 10px;
+      max-width: 600px;
+      min-width: 340px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      position: relative;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .close-modal {
+      color: #aaa;
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .close-modal:hover {
+      color: #f16179;
+    }
+    .modal-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: #333;
+    }
+    .modal-section {
+      margin-bottom: 15px;
+    }
+    .modal-section-title {
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    .modal-section-content {
+      background: #f9f9f9;
+      border-radius: 5px;
+      padding: 10px 12px;
+      font-size: 15px;
+    }
+    .modal-items-list {
+      margin-top: 10px;
+    }
+    .modal-item-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+    .modal-total {
+      font-weight: 600;
+      color: #333;
+      text-align: right;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    .no-purchases {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+      font-style: italic;
+    }
+
+    .btn-pago.disabled {
+      background: #bdbdbd !important; /* cinza */
+      color: #fff !important;
+      opacity: 1 !important;
+      cursor: not-allowed !important;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/celiabordadoslogo.png" alt="Célia Bordados Logo" class="logo-img">
+          </a>
+          <!--<div class="admin-login-container">
+            <a href="#" class="admin-login-btn" onclick="toggleLoginModal()">
+              <i class="fas fa-user"></i>
+            </a>
+          </div>-->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""></span>
+          </button>
+
+          <div class="collapse navbar-collapse innerpage_navbar" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">INÍCIO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Vitrine</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="why.html">Sobre Nós</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contato</a>
+              </li>
+            </ul>
+            <div class="user_option">
+              <a href="https://wa.me/5531988116773" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- profile section -->
+  <section class="profile-section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>Meu Perfil</h2>
+        <p>Visualize e gerencie suas informações pessoais</p>
+      </div>
+      
+      <div class="profile-container">
+        <div id="feedback-message" class="feedback-message"></div>
+        
+        <div class="profile-header">
+          <div class="profile-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div>
+            <h3 class="profile-name" id="profileName">Carregando...</h3>
+            <p class="profile-email" id="profileEmail">Carregando...</p>
+          </div>
+        </div>
+        
+        <div class="profile-section">
+          <h4 class="profile-section-title">Informações Pessoais</h4>
+          
+          <div class="profile-info-item">
+            <div class="profile-info-label">E-mail</div>
+            <div class="profile-info-value" id="userEmail">Carregando...</div>
+          </div>
+          
+          <div class="profile-info-item">
+            <div class="profile-info-label">Telefone</div>
+            <div class="profile-info-value" id="userTelefone">Não informado</div>
+            <div class="edit-field" style="display: none;">
+              <input type="tel" class="form-control" id="editTelefone" placeholder="Digite seu telefone com DDD (XX) XXXXX-XXXX">
+            </div>
+          </div>
+
+          <div class="profile-info-item">
+            <div class="profile-info-label">Endereço Completo</div>
+            <div class="profile-info-value" id="userEndereco">Não informado</div>
+            <div class="edit-field" style="display: none;">
+              <textarea class="form-control" id="editEndereco" rows="3" placeholder="Digite seu endereço completo"></textarea>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Nova seção de histórico de compras -->
+        <div class="profile-section">
+          <h4 class="profile-section-title">Histórico de Compras</h4>
+          <div id="purchaseHistory" class="purchase-history">
+            <div class="no-purchases">
+              <i class="fas fa-shopping-bag fa-2x mb-3"></i>
+              <p>Carregando histórico de compras...</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Modal de detalhes do pedido -->
+        <div id="modalPedido" class="modal">
+          <div class="modal-content">
+            <span class="close-modal" id="closeModalPedido">&times;</span>
+            <div id="modalPedidoContent"></div>
+          </div>
+        </div>
+        
+        <div class="profile-buttons">
+          <button class="btn-edit" id="btnEdit">Editar Perfil</button>
+          <button class="btn-save" id="btnSave" style="display: none;">Salvar Alterações</button>
+          <button class="btn-cancel" id="btnCancel" style="display: none;">Cancelar</button>
+          <button class="btn-logout" id="btnLogout">Sair</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end profile section -->
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="info_logo">
+        <h2>Célia Bordados</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Sobre Nós</h5>
+          <p>Somos especializados em bordados personalizados para diversas ocasiões. Nossos produtos são feitos com muito carinho e atenção aos detalhes.</p>
+        </div>
+        <div class="col-md-3">
+          <h5>Produtos</h5>
+          <ul>
+            <li><a href="shop.html">Toalhas Bordadas</a></li>
+            <li><a href="shop.html">Panos de Prato</a></li>
+            <li><a href="shop.html">Kits para Bebê</a></li>
+            <li><a href="shop.html">Uniformes</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Links Úteis</h5>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="shop.html">Vitrine</a></li>
+            <li><a href="why.html">Sobre Nós</a></li>
+            <li><a href="contact.html">Contato</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <div class="social_box">
+            <h5>Siga-nos</h5>
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5531988116773"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>&copy; <span id="displayYear"></span> Todos os direitos reservados | Célia Bordados</p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.js"></script>
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
+  <!-- API js -->
+  <script src="js/api.js"></script>
+  <script>
+    // Verificar se o usuário está logado
+    if (!SessionManager.isClienteLogado()) {
+      window.location.href = "login.html";
+    }
+    
+    // Exibir ano atual no footer
+    document.getElementById("displayYear").textContent = new Date().getFullYear();
+    
+    // Removendo as funções relacionadas ao modal de login
+    /*
+    // Função para alternar a exibição do modal de login
+    function toggleLoginModal() {
+      document.getElementById("loginModal").classList.toggle("show-modal");
+    }
+    
+    // Fechar modal ao clicar fora dele
+    window.onclick = function(event) {
+      var modal = document.getElementById("loginModal");
+      if (event.target == modal) {
+        toggleLoginModal();
+      }
+    }
+    */
+    
+    // Carregar dados do usuário
+    document.addEventListener("DOMContentLoaded", function() {
+      const userData = SessionManager.obterCliente();
+      
+      if (userData) {
+        console.log('Dados do usuário da sessão:', JSON.stringify(userData, null, 2));
+        
+        // Preencher informações básicas do perfil que vêm do AuthResponse
+        document.getElementById('profileName').textContent = userData.nome || 'Nome não informado';
+        document.getElementById('profileEmail').textContent = userData.email || 'Email não informado';
+        document.getElementById('userEmail').textContent = userData.email || 'Email não informado';
+        
+        // Mostrar indicador de carregamento
+        document.getElementById('userTelefone').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Carregando...';
+        document.getElementById('userEndereco').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Carregando...';
+        
+        // Buscar dados completos do cliente usando a API
+        buscarDadosCompletosDoCliente(userData);
+      } else {
+        // Redirecionar para a página de login se não estiver logado
+        window.location.href = 'login.html';
+      }
+      
+      // Função para buscar os dados completos do cliente do backend
+      function buscarDadosCompletosDoCliente(userData) {
+        // Usando o ID do cliente para buscar os dados completos
+        fetch(`${API_BASE_URL}/clientes/id/${userData.userId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${userData.token}`
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Erro ao buscar dados completos do cliente');
+          }
+          return response.json();
+        })
+        .then(clienteCompleto => {
+          console.log('Dados completos do cliente:', JSON.stringify(clienteCompleto, null, 2));
+          
+          // Atualizar os dados no sessionStorage
+          userData.telefone = clienteCompleto.telefone;
+          userData.enderecoCompleto = clienteCompleto.enderecoCompleto;
+          SessionManager.salvarCliente(userData);
+          
+          // Atualizar a interface com os dados completos
+          if (clienteCompleto.telefone) {
+            // Formatar o telefone para exibição
+            const telefone = clienteCompleto.telefone.replace(/\D/g, '');
+            if (telefone.length >= 10) {
+              const ddd = telefone.substring(0, 2);
+              const parte1 = telefone.substring(2, 7);
+              const parte2 = telefone.substring(7);
+              const telefoneFormatado = `(${ddd}) ${parte1}-${parte2}`;
+              
+              document.getElementById('userTelefone').textContent = telefoneFormatado;
+              document.getElementById('editTelefone').value = telefoneFormatado;
+            } else {
+              document.getElementById('userTelefone').textContent = clienteCompleto.telefone;
+              document.getElementById('editTelefone').value = clienteCompleto.telefone;
+            }
+          } else {
+            document.getElementById('userTelefone').textContent = 'Não informado';
+          }
+          
+          if (clienteCompleto.enderecoCompleto) {
+            document.getElementById('userEndereco').textContent = clienteCompleto.enderecoCompleto;
+            document.getElementById('editEndereco').value = clienteCompleto.enderecoCompleto;
+          } else {
+            document.getElementById('userEndereco').textContent = 'Não informado';
+          }
+
+          // Buscar histórico de compras
+          buscarHistoricoCompras(userData);
+        })
+        .catch(error => {
+          console.error('Erro ao buscar dados completos do cliente:', error);
+          // Exibir os dados básicos disponíveis na sessão
+          document.getElementById('userTelefone').textContent = userData.telefone || 'Não informado';
+          document.getElementById('userEndereco').textContent = userData.enderecoCompleto || 'Não informado';
+          document.getElementById('editTelefone').value = userData.telefone || '';
+          document.getElementById('editEndereco').value = userData.enderecoCompleto || '';
+        });
+      }
+      
+      // Função para buscar histórico de compras
+      function buscarHistoricoCompras(userData) {
+        fetch(`${API_BASE_URL}/pedidos/cliente/${userData.userId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${userData.token}`
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Erro ao buscar histórico de compras');
+          }
+          return response.json();
+        })
+        .then(pedidos => {
+          const purchaseHistoryContainer = document.getElementById('purchaseHistory');
+          
+          if (!pedidos || pedidos.length === 0) {
+            purchaseHistoryContainer.innerHTML = `
+              <div class="no-purchases">
+                <i class="fas fa-shopping-bag fa-2x mb-3"></i>
+                <p>Você ainda não realizou nenhuma compra.</p>
+              </div>
+            `;
+            return;
+          }
+
+          // Ordenar pedidos por data (mais recentes primeiro)
+          pedidos.sort((a, b) => new Date(b.dataPedido) - new Date(a.dataPedido));
+
+          purchaseHistoryContainer.innerHTML = pedidos.map((pedido, idx) => {
+            const dataPedido = new Date(pedido.dataPedido).toLocaleDateString('pt-BR');
+            const statusClass = {
+              'PENDENTE': 'status-pending',
+              'CONCLUIDO': 'status-completed',
+              'CANCELADO': 'status-cancelled',
+              'PAGO': 'status-completed',
+              'PROCESSANDO': 'status-pending',
+              'ENVIADO': 'status-shipped',
+              'ENTREGUE': 'status-delivered',
+              'EM_PRODUCAO': 'status-processing'
+            }[pedido.status] || 'status-pending';
+
+            const showTrackingLink = ['PAGO', 'PROCESSANDO', 'EM_PRODUCAO', 'ENVIADO', 'ENTREGUE', 'CONCLUIDO'].includes(pedido.status);
+            const isDisabled = ['CONCLUIDO', 'CANCELADO', 'PENDENTE'].includes(pedido.status);
+
+            // Verificar status de avaliação
+            const avaliacoes = JSON.parse(localStorage.getItem('avaliacoesPedidos') || '{}');
+            const statusAvaliado = avaliacoes[pedido.id]?.avaliado === true;
+            const labelAvaliacao = (pedido.status === 'ENTREGUE' && !statusAvaliado)
+              ? `<div style='width:100%;display:block;margin:6px 0 0 0;'><span style='color:#f16179;font-weight:500;'>O que você achou dos produtos? Avalie na página Acompanhar Pedido!</span></div>`
+              : '';
+
+            return `
+              <div style="margin-bottom:8px;">
+                <div class="purchase-list-item">
+                  <span class="purchase-list-date"><i class="far fa-calendar-alt"></i> ${dataPedido}</span>
+                  <span class="purchase-list-status ${statusClass}">${{
+                    'EM_PRODUCAO': 'EM PRODUÇÃO',
+                    'ENVIADO': 'ENVIADO',
+                    'ENTREGUE': 'ENTREGUE',
+                    'PENDENTE': 'PENDENTE',
+                    'PAGO': 'PAGO',
+                    'PROCESSANDO': 'PROCESSANDO',
+                    'CONCLUIDO': 'CONCLUÍDO',
+                    'CANCELADO': 'CANCELADO'
+                  }[pedido.status] || pedido.status}</span>
+                  ${showTrackingLink ? `
+                  <a href="cliente-rastreamento.html?pedidoId=${pedido.id}"
+                    class="btn-view ${isDisabled ? 'disabled' : ''}"
+                    style="margin-left:10px; background:${isDisabled ? '#bdbdbd' : '#f16179'}; color:#fff; border:none; padding:6px 14px; border-radius:20px; text-decoration:none; display:inline-block; ${isDisabled ? 'cursor:not-allowed;' : ''}"
+                    title="Acompanhar Pedido"
+                    ${isDisabled ? 'onclick="return false;"' : ''}>
+                    Acompanhar Pedido
+                  </a>
+                  ` : ''}
+                  <span class="purchase-list-total">Total: R$ ${pedido.valorTotal.toFixed(2)}</span>
+                  <button class="btn-view" data-idx="${idx}" title="Visualizar detalhes"><i class="fas fa-eye"></i></button>
+                </div>
+                ${labelAvaliacao}
+              </div>
+            `;
+          }).join('');
+
+          // Adicionar eventos aos botões de visualizar
+          document.querySelectorAll('.btn-view').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const idx = this.getAttribute('data-idx');
+              exibirDetalhesPedido(pedidos[idx]);
+            });
+          });
+
+          // Impedir clique no botão desabilitado
+          document.querySelectorAll('.btn-pago.disabled').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              return false;
+            });
+          });
+        })
+        .catch(error => {
+          console.error('Erro ao buscar histórico de compras:', error);
+          document.getElementById('purchaseHistory').innerHTML = `
+            <div class="no-purchases">
+              <i class="fas fa-exclamation-circle fa-2x mb-3"></i>
+              <p>Erro ao carregar histórico de compras. Por favor, tente novamente mais tarde.</p>
+            </div>
+          `;
+        });
+      }
+      
+      // Função para exibir detalhes do pedido em um modal
+      function exibirDetalhesPedido(pedido) {
+        const dataPedido = new Date(pedido.dataPedido).toLocaleDateString('pt-BR');
+        let html = `
+          <div class="modal-title">Detalhes do Pedido</div>
+          <div class="modal-section">
+            <div class="modal-section-title">Data do Pedido</div>
+            <div class="modal-section-content">${dataPedido}</div>
+          </div>
+          <div class="modal-section">
+            <div class="modal-section-title">Status</div>
+            <div class="modal-section-content">${{
+              'EM_PRODUCAO': 'EM PRODUÇÃO',
+              'ENVIADO': 'ENVIADO',
+              'ENTREGUE': 'ENTREGUE',
+              'PENDENTE': 'PENDENTE',
+              'PAGO': 'PAGO',
+              'PROCESSANDO': 'PROCESSANDO',
+              'CONCLUIDO': 'CONCLUÍDO',
+              'CANCELADO': 'CANCELADO'
+            }[pedido.status] || pedido.status}</div>
+          </div>
+          <div class="modal-section">
+            <div class="modal-section-title">Itens</div>
+            <div class="modal-items-list">
+              ${pedido.itens.map(item => `
+                <div class="modal-item-row">
+                  <span>${item.produto.nome} x ${item.quantidade}</span>
+                  <span>R$ ${(item.precoUnitario * item.quantidade).toFixed(2)}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="modal-total">Total: R$ ${pedido.valorTotal.toFixed(2)}</div>
+        `;
+        document.getElementById('modalPedidoContent').innerHTML = html;
+        document.getElementById('modalPedido').style.display = 'block';
+      }
+
+      // Fechar modal ao clicar no X
+      document.getElementById('closeModalPedido').onclick = function() {
+        document.getElementById('modalPedido').style.display = 'none';
+      };
+      // Fechar modal ao clicar fora do conteúdo
+      window.onclick = function(event) {
+        const modal = document.getElementById('modalPedido');
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      };
+      
+      // Botão de editar perfil
+      document.getElementById('btnEdit').addEventListener('click', function() {
+        // Mostrar campos de edição
+        document.querySelectorAll('.profile-info-value').forEach(function(el) {
+          el.style.display = 'none';
+        });
+        
+        document.querySelectorAll('.edit-field').forEach(function(el) {
+          el.style.display = 'block';
+        });
+        
+        // Alternar botões
+        document.getElementById('btnEdit').style.display = 'none';
+        document.getElementById('btnSave').style.display = 'inline-block';
+        document.getElementById('btnCancel').style.display = 'inline-block';
+      });
+      
+      // Botão de cancelar edição
+      document.getElementById('btnCancel').addEventListener('click', function() {
+        // Esconder campos de edição
+        document.querySelectorAll('.profile-info-value').forEach(function(el) {
+          el.style.display = 'block';
+        });
+        
+        document.querySelectorAll('.edit-field').forEach(function(el) {
+          el.style.display = 'none';
+        });
+        
+        // Alternar botões
+        document.getElementById('btnEdit').style.display = 'inline-block';
+        document.getElementById('btnSave').style.display = 'none';
+        document.getElementById('btnCancel').style.display = 'none';
+      });
+      
+      // Função para mostrar mensagem de feedback
+      function mostrarFeedback(mensagem, tipo) {
+        const feedback = document.getElementById('feedback-message');
+        feedback.textContent = mensagem;
+        feedback.className = 'feedback-message';
+        feedback.classList.add(tipo === 'sucesso' ? 'feedback-success' : 'feedback-error');
+        feedback.style.display = 'block';
+        
+        // Rolar até a mensagem
+        feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Esconder após 5 segundos
+        setTimeout(() => {
+          feedback.style.display = 'none';
+        }, 5000);
+      }
+      
+      // Função para formatar telefone enquanto o usuário digita
+      function formatarTelefone(input) {
+        let valor = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+        
+        if (valor.length <= 11) {
+          // Formatação conforme o número de dígitos
+          if (valor.length > 2) {
+            valor = '(' + valor.substring(0, 2) + ') ' + valor.substring(2);
+          }
+          if (valor.length > 9) {
+            valor = valor.substring(0, 10) + '-' + valor.substring(10);
+          }
+          input.value = valor;
+        }
+      }
+      
+      // Função para validar formato de telefone
+      function validarTelefone(telefone) {
+        // Remove todos os caracteres não numéricos para validação
+        const numeros = telefone.replace(/\D/g, '');
+        
+        // Verifica se tem pelo menos 10 dígitos (DDD + número)
+        if (numeros.length < 10) {
+          return false;
+        }
+        
+        // Verifica se o DDD é válido (dois dígitos, não começando com 0)
+        const ddd = numeros.substring(0, 2);
+        if (ddd.charAt(0) === '0' || parseInt(ddd) < 11) {
+          return false;
+        }
+        
+        return true;
+      }
+      
+      // Adicionar mascara ao campo de telefone
+      document.getElementById('editTelefone').addEventListener('input', function() {
+        formatarTelefone(this);
+      });
+      
+      // Botão de salvar alterações
+      document.getElementById('btnSave').addEventListener('click', function() {
+        // Obter valores dos campos
+        const telefone = document.getElementById('editTelefone').value;
+        const endereco = document.getElementById('editEndereco').value;
+        
+        // Validar campos
+        if (telefone.trim() === '') {
+          mostrarFeedback('Por favor, informe seu telefone.', 'erro');
+          return;
+        }
+        
+        // Validar formato do telefone
+        if (!validarTelefone(telefone)) {
+          mostrarFeedback('Por favor, informe um telefone válido no formato (XX) XXXXX-XXXX.', 'erro');
+          return;
+        }
+        
+        if (endereco.trim() === '') {
+          mostrarFeedback('Por favor, informe seu endereço.', 'erro');
+          return;
+        }
+        
+        // Atualizar dados do usuário
+        userData.telefone = telefone;
+        userData.enderecoCompleto = endereco;
+        
+        // Mostrar indicador de carregamento
+        document.getElementById('btnSave').disabled = true;
+        document.getElementById('btnSave').textContent = 'Salvando...';
+        
+        // Enviar atualização para o backend
+        atualizarPerfilNoBackend(userData)
+          .then(sucesso => {
+            if (sucesso) {
+              // Salvar no localStorage e sessionStorage
+              localStorage.setItem('userData', JSON.stringify(userData));
+              sessionStorage.setItem('clienteLogado', JSON.stringify(userData));
+        
+        // Atualizar exibição
+              document.getElementById('userTelefone').textContent = telefone;
+              document.getElementById('userEndereco').textContent = endereco;
+        
+        // Esconder campos de edição
+        document.querySelectorAll('.profile-info-value').forEach(function(el) {
+          el.style.display = 'block';
+        });
+        
+        document.querySelectorAll('.edit-field').forEach(function(el) {
+          el.style.display = 'none';
+        });
+        
+        // Alternar botões
+        document.getElementById('btnEdit').style.display = 'inline-block';
+        document.getElementById('btnSave').style.display = 'none';
+        document.getElementById('btnCancel').style.display = 'none';
+        
+        // Mostrar mensagem de sucesso
+              mostrarFeedback('Perfil atualizado com sucesso!', 'sucesso');
+            }
+          })
+          .finally(() => {
+            // Restaurar o botão
+            document.getElementById('btnSave').disabled = false;
+            document.getElementById('btnSave').textContent = 'Salvar Alterações';
+          });
+      });
+      
+      // Função para atualizar o perfil no backend
+      function atualizarPerfilNoBackend(userData) {
+        // Limpar máscaras antes de enviar
+        const telefoneNumerico = userData.telefone.replace(/\D/g, '');
+        
+        return fetch(`${API_BASE_URL}/clientes/atualizar`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${userData.token}`
+          },
+          body: JSON.stringify({
+            id: userData.userId,
+            telefone: telefoneNumerico, // Enviar apenas números
+            enderecoCompleto: userData.enderecoCompleto
+          })
+        })
+        .then(response => {
+          if (!response.ok) {
+            return response.json().then(data => {
+              // Verificar se é erro específico de telefone
+              if (data.erro && data.erro.includes("telefone já está cadastrado")) {
+                throw new Error("Este número de telefone já está sendo usado por outra conta. Por favor, informe outro número.");
+              }
+              throw new Error(data.erro || 'Erro ao atualizar perfil no servidor');
+            });
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Perfil atualizado com sucesso no servidor:', data);
+          
+          // Se o servidor retornou dados atualizados do cliente, usá-los
+          if (data.cliente) {
+            // Formatar o telefone para exibição
+            const telefone = data.cliente.telefone;
+            if (telefone && telefone.length >= 10) {
+              const ddd = telefone.substring(0, 2);
+              const parte1 = telefone.substring(2, 7);
+              const parte2 = telefone.substring(7);
+              userData.telefone = `(${ddd}) ${parte1}-${parte2}`;
+            } else {
+              userData.telefone = telefone;
+            }
+            
+            userData.enderecoCompleto = data.cliente.enderecoCompleto;
+          }
+          
+          return true;
+        })
+        .catch(error => {
+          console.error('Erro ao atualizar perfil:', error);
+          mostrarFeedback('Erro ao atualizar perfil: ' + error.message, 'erro');
+          return false;
+        });
+      }
+      
+      // Botão de logout
+      document.getElementById('btnLogout').addEventListener('click', function() {
+        // Chamar o endpoint de logout no backend
+        fetch('http://localhost:8080/api/auth/logout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            // Limpar dados da sessão
+            SessionManager.logout();
+            // Redirecionar para a página inicial
+            window.location.href = 'login.html';
+          } else {
+            console.error('Erro ao fazer logout');
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao fazer logout:', error);
+          // Mesmo com erro, limpar dados da sessão e redirecionar
+          SessionManager.logout();
+          window.location.href = 'login.html';
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

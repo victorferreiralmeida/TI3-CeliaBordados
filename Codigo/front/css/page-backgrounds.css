@@ -1,0 +1,43 @@
+/* 
+ * Arquivo CSS para definir fundos de página independentes
+ * Cada página terá sua própria classe de fundo que pode ser personalizada
+ */
+
+/* Fundo padrão para todas as páginas */
+.page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1000;
+}
+
+/* Fundos específicos para cada página */
+.home-background {
+  background-color: #ffffff; /* Cor de fundo da página inicial */
+}
+
+.shop-background {
+  background-color: #ffffff; /* Cor de fundo da página de vitrine */
+}
+
+.about-background {
+  background-color: #ffffff; /* Cor de fundo da página sobre nós */
+}
+
+.contact-background {
+  background-color: #ffffff; /* Cor de fundo da página de contato */
+}
+
+.login-background {
+  background-color: #ffffff; /* Cor de fundo da página de login */
+}
+
+.profile-background {
+  background-color: #ffffff; /* Cor de fundo da página de perfil */
+}
+
+.register-background {
+  background-color: #ffffff; /* Cor de fundo da página de cadastro */
+}

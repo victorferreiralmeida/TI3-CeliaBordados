@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- Site Metas -->
+    <meta name="keywords"
+          content="bordados, bordados personalizados, mesa, banho, corporativo, uniformes, toalhas, panos de prato"/>
+    <meta name="description" content="Área administrativa Célia Bordados"/>
+    <meta name="author" content="Célia Bordados"/>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+    <title>Gerenciamento de Estoque - Célia Bordados</title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <!-- font awesome style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet"/>
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet"/>
+
+    <style>
+        /* Modal de troca de senha */
+        .senha-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .senha-modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            position: relative;
+        }
+
+        .senha-modal-title {
+            color: #f16179;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .senha-modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #f16179;
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .senha-modal-close:hover {
+            color: #e3435e;
+            transform: scale(1.2);
+        }
+
+        .senha-form-group {
+            margin-bottom: 20px;
+        }
+
+        .senha-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .senha-form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .senha-form-buttons {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .senha-form-btn {
+            background-color: #f16179;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .senha-form-btn:hover {
+            background-color: #e3435e;
+        }
+
+        .senha-form-error {
+            color: #e74c3c;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* Estilos para os botões de ação dos produtos */
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .admin-actions .btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .admin-actions .btn i {
+            font-size: 16px;
+        }
+
+        .admin-actions .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #000;
+        }
+
+        .admin-actions .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #d39e00;
+        }
+
+        .admin-actions .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .admin-actions .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+        /* Ajustes para o layout responsivo */
+        @media (max-width: 768px) {
+            .admin-actions {
+                flex-direction: column;
+            }
+
+            .admin-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Imagem dos produtos no admin igual à vitrine */
+        .produto-img-admin {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body class="sub_page">
+<div class="main-content">
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/celiabordadoslogo.png" alt="Célia Bordados Logo" class="logo-img">
+                    </a>
+                </nav>
+            </div>
+        </header>
+        <!-- end header section -->
+    </div>
+
+    <div class="container admin-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <div class="admin-sidebar">
+                    <h4>Menu Administrativo</h4>
+                    <ul>
+                        <li><a href="admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="admin-orders.html"><i class="fas fa-shopping-cart"></i> Pedidos</a></li>
+                        <li><a href="admin-inventory.html" class="active"><i class="fas fa-boxes"></i> Vitrine</a></li>
+                        <li><a href="admin-clients.html"><i class="fas fa-users"></i> Clientes</a></li>
+                        <li><a href="admin-engagement.html"><i class="fas fa-chart-line"></i> Engajamento de Produtos</a></li>
+                        <li><a href="admin-report.html"><i class="fas fa-file-pdf"></i> Relatório de Vendas</a></li>
+                        <li><a href="#" id="alterar-senha-btn"><i class="fas fa-key"></i> Alterar Senha</a></li>
+                        <li><a href="index.html" id="admin-logout-btn"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <div class="admin-content">
+                    <div class="admin-header">
+                        <h2><i class="fas fa-boxes"></i> Gerenciamento de Vitrine</h2>
+                        <p>Visualize e gerencie todos os produtos da vitrine.</p>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="row filter-row">
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option value="">Todas as Categorias</option>
+                                <option value="towel">Toalhas</option>
+                                <option value="apron">Aventais</option>
+                                <option value="shirt">Camisas</option>
+                                <option value="kitchen">Kit Cozinha</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Buscar por produto">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary btn-block" id="btn-filtrar">Filtrar</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" onclick="abrirPopupAdicionarProduto()">Adicionar Produto
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- Inventory Table -->
+                    <section class="shop_section layout_padding">
+                        <div class="container">
+                            <div class="row" id="produtos-container">
+                                <!-- Os cards de produtos serão inseridos aqui via JS -->
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- info section -->
+<section class="info_section layout_padding2">
+    <div class="container">
+        <div class="info_logo">
+            <h2>Célia Bordados</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Sobre Nós</h5>
+                <p>Somos especializados em bordados personalizados para diversas ocasiões. Nossos produtos são feitos
+                    com muito carinho e atenção aos detalhes.</p>
+            </div>
+            <div class="col-md-3">
+                <h5>Produtos</h5>
+                <ul>
+                    <li><a href="shop.html">Toalhas Bordadas</a></li>
+                    <li><a href="shop.html">Panos de Prato</a></li>
+                    <li><a href="shop.html">Kits para Bebê</a></li>
+                    <li><a href="shop.html">Uniformes</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>Links Úteis</h5>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="shop.html">Vitrine</a></li>
+                    <li><a href="why.html">Sobre Nós</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <div class="social_box">
+                    <h5>Siga-nos</h5>
+                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5531988116773"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end info section -->
+
+<!-- footer section -->
+<footer class="footer_section">
+    <div class="container">
+        <p>&copy; <span id="displayYear"></span> Todos os direitos reservados | Célia Bordados</p>
+    </div>
+</footer>
+<!-- footer section -->
+
+<!-- Modal de troca de senha -->
+<div id="trocaSenhaModal" class="senha-modal">
+    <div class="senha-modal-content">
+        <h2 class="senha-modal-title" id="trocaSenhaTitulo">Alterar Senha</h2>
+        <span id="fecharModal" class="senha-modal-close">&times;</span>
+        <p id="trocaSenhaDescricao">Preencha os campos abaixo para alterar sua senha.</p>
+
+        <form id="trocaSenhaForm">
+            <div class="senha-form-group">
+                <label for="senhaAtual">Senha Atual:</label>
+                <input type="password" id="senhaAtual" required>
+            </div>
+
+            <div class="senha-form-group">
+                <label for="novaSenha">Nova Senha:</label>
+                <input type="password" id="novaSenha" required>
+            </div>
+
+            <div class="senha-form-group">
+                <label for="confirmaSenha">Confirme a Nova Senha:</label>
+                <input type="password" id="confirmaSenha" required>
+            </div>
+
+            <div class="senha-form-error" id="senhaError">
+                As senhas não correspondem ou não atendem aos requisitos mínimos.
+            </div>
+
+            <div class="senha-form-buttons">
+                <button type="submit" class="senha-form-btn">Alterar Senha</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- jQery -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+<!-- API js -->
+<script src="js/api.js"></script>
+<!-- Admin Produtos js -->
+<script src="js/admin-produtos.js"></script>
+
+<script>
+    // Verificar se o administrador está logado
+    document.addEventListener('DOMContentLoaded', function () {
+        if (!SessionManager.isAdminLogado()) {
+            // Redirecionar para a página de login se não estiver logado
+            window.location.href = 'login.html';
+        }
+
+        // Adicionar o evento de clique no botão de alterar senha
+        document.getElementById('alterar-senha-btn').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Exibir o modal
+            document.getElementById('trocaSenhaModal').style.display = 'block';
+
+            // Limpar os campos do formulário
+            document.getElementById('senhaAtual').value = '';
+            document.getElementById('novaSenha').value = '';
+            document.getElementById('confirmaSenha').value = '';
+            document.getElementById('senhaError').style.display = 'none';
+        });
+
+        // Adicionar funcionalidade ao botão de fechar o modal
+        document.getElementById('fecharModal').addEventListener('click', function () {
+            document.getElementById('trocaSenhaModal').style.display = 'none';
+        });
+
+        // Tratar o envio do formulário de troca de senha
+        document.getElementById('trocaSenhaForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const senhaAtual = document.getElementById('senhaAtual').value;
+            const novaSenha = document.getElementById('novaSenha').value;
+            const confirmaSenha = document.getElementById('confirmaSenha').value;
+
+            // Verificar se as senhas coincidem
+            if (novaSenha !== confirmaSenha) {
+                document.getElementById('senhaError').textContent = 'As senhas não correspondem.';
+                document.getElementById('senhaError').style.display = 'block';
+                return;
+            }
+
+            // Verificar se a nova senha é igual à senha padrão
+            if (novaSenha === 'admin' || novaSenha === 'admin1234') {
+                document.getElementById('senhaError').textContent = 'A nova senha não pode ser igual à senha padrão';
+                document.getElementById('senhaError').style.display = 'block';
+                return;
+            }
+
+            // Verificar se a nova senha tem pelo menos 6 caracteres
+            if (novaSenha.length < 6) {
+                document.getElementById('senhaError').textContent = 'A nova senha deve ter pelo menos 6 caracteres';
+                document.getElementById('senhaError').style.display = 'block';
+                return;
+            }
+
+            // Obter o admin da sessão
+            const admin = SessionManager.obterAdmin();
+
+            // Enviar a requisição para alterar a senha
+            fetch(`${API_BASE_URL}/admin/alterar-senha`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${admin.token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    senhaAtual: senhaAtual,
+                    novaSenha: novaSenha
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => {
+                            throw new Error(data.mensagem || 'Senha atual incorreta');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.sucesso) {
+                        // Fechar o modal
+                        document.getElementById('trocaSenhaModal').style.display = 'none';
+                        mostrarPopup('Senha alterada com sucesso!');
+                    } else {
+                        document.getElementById('senhaError').textContent = data.mensagem || 'Erro ao alterar senha';
+                        document.getElementById('senhaError').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('senhaError').textContent = error.message;
+                    document.getElementById('senhaError').style.display = 'block';
+                });
+        });
+
+        // Exibir ano atual no footer
+        document.getElementById("displayYear").textContent = new Date().getFullYear();
+
+        const btnFiltrar = document.getElementById('btn-filtrar');
+        if (btnFiltrar) {
+            btnFiltrar.addEventListener('click', filtrarProdutos);
+        }
+    });
+
+    function filtrarProdutos() {
+        const categoria = document.querySelector('.filter-row select').value;
+        const busca = document.querySelector('.filter-row input[type=\"text\"]').value.toLowerCase();
+
+        ProdutoAPI.listarProdutos().then(produtos => {
+            let filtrados = produtos;
+            if (categoria) {
+                filtrados = filtrados.filter(p => p.categoria === categoria);
+            }
+            if (busca) {
+                filtrados = filtrados.filter(p => p.nome.toLowerCase().includes(busca));
+            }
+            exibirProdutos(filtrados);
+        });
+    }
+
+    // Adicionar funcionalidade ao botão de logout
+    document.querySelector('#admin-logout-btn').addEventListener('click', function (e) {
+        e.preventDefault(); // Prevenir o comportamento padrão do link
+
+        // Limpar dados da sessão através do SessionManager
+        SessionManager.logout();
+
+        // Redirecionar para a página inicial
+        window.location.href = 'index.html';
+
+        console.log('Administrador deslogado com sucesso');
+    });
+
+    function mostrarPopup(mensagem) {
+        const popup = document.getElementById('popup-carrinho');
+        const mensagemPopup = document.getElementById('mensagem-popup');
+        mensagemPopup.textContent = mensagem;
+        popup.classList.add('mostrar');
+
+    }
+
+    function fecharPopup() {
+        const popup = document.getElementById('popup-carrinho');
+        popup.classList.remove('mostrar');
+    }
+</script>
+<div id="popup-carrinho" class="popup-carrinho">
+    <div class="popup-conteudo">
+        <span class="fechar-popup" onclick="fecharPopup()">&times;</span>
+        <p id="mensagem-popup"></p>
+    </div>
+</div>
+
+</body>
+</html>

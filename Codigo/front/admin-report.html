@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- Site Metas -->
+    <meta name="keywords"
+          content="bordados, bordados personalizados, mesa, banho, corporativo, uniformes, toalhas, panos de prato"/>
+    <meta name="description" content="Área administrativa Célia Bordados"/>
+    <meta name="author" content="Célia Bordados"/>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <title>Relatório de Vendas - Célia Bordados</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/responsive.css" rel="stylesheet"/>
+    <style>
+        .report-header {
+            background: #f16179;
+            padding: 40px 0 20px 0;
+            text-align: center;
+        }
+
+        .report-header img {
+            max-width: 180px;
+        }
+
+        .report-title {
+            color: #f16179;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .report-form {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.07);
+            padding: 40px 30px 30px 30px;
+            max-width: 450px;
+            margin: -60px auto 0 auto;
+        }
+
+        .btn-report {
+            background: #f16179;
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 0;
+            width: 100%;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+
+        .btn-report:hover {
+            background: #e3435e;
+        }
+
+        .back-btn {
+            background: #f16179;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 15px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: #e3435e;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .form-select, .form-control {
+            margin-bottom: 18px;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .select {
+            position: relative;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .category-select-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background: #fff;
+            cursor: pointer;
+            min-height: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .category-select-box.active {
+            border-color: #f16179;
+            box-shadow: 0 0 0 2px #f1617922;
+        }
+        .selected-tag {
+            background: #f16179;
+            color: #fff;
+            border-radius: 3px;
+            padding: 3px 8px;
+            margin: 2px 5px 2px 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.95em;
+        }
+        .selected-tag .remove-tag {
+            margin-left: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .options-list {
+            position: absolute;
+            z-index: 10;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 0 0 5px 5px;
+            max-height: 180px;
+            overflow-y: auto;
+            display: none;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .options-list li {
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .options-list li:hover, .options-list li.selected {
+            background: #f16179;
+            color: #fff;
+        }
+        /* Modal de troca de senha */
+        .senha-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .senha-modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            position: relative;
+        }
+        .senha-modal-title {
+            color: #f16179;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .senha-modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #f16179;
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: all 0.2s;
+        }
+        .senha-modal-close:hover {
+            color: #e3435e;
+            transform: scale(1.2);
+        }
+        .senha-form-group {
+            margin-bottom: 20px;
+        }
+        .senha-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+        .senha-form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .senha-form-buttons {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .senha-form-btn {
+            background-color: #f16179;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .senha-form-btn:hover {
+            background-color: #e3435e;
+        }
+        .senha-form-error {
+            color: #e74c3c;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.7.0/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body class="sub_page">
+<div class="main-content">
+    <div class="hero_area">
+        <header class="header_section">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/celiabordadoslogo.png" alt="Célia Bordados Logo" class="logo-img">
+                    </a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    <div class="container admin-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <div class="admin-sidebar">
+                    <h4>Menu Administrativo</h4>
+                    <ul>
+                        <li><a href="admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="admin-orders.html"><i class="fas fa-shopping-cart"></i> Pedidos</a></li>
+                        <li><a href="admin-inventory.html"><i class="fas fa-boxes"></i> Vitrine</a></li>
+                        <li><a href="admin-clients.html"><i class="fas fa-users"></i> Clientes</a></li>
+                        <li><a href="admin-engagement.html"><i class="fas fa-chart-line"></i> Engajamento de
+                            Produtos</a></li>
+                        <li><a href="admin-report.html" class="active"><i class="fas fa-file-pdf"></i> Relatório de
+                            Vendas</a></li>
+                        <li><a href="#" id="alterar-senha-btn"><i class="fas fa-key"></i> Alterar Senha</a></li>
+                        <li><a href="#" id="admin-logout-btn"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <div class="admin-content">
+                    <div class="report-header">
+                        <img src="images/celiabordadoslogo.png" alt="Célia Bordados Logo">
+                    </div>
+                    <div class="report-form">
+                        <button class="back-btn" onclick="window.location.href='admin-dashboard.html'">
+                            <i class="fas fa-arrow-left"></i> Voltar
+                        </button>
+                        <div class="report-title">Exportar Relatório PDF</div>
+                        <div class="error-message" id="errorMsg"></div>
+                        <form id="relatorioForm">
+                            <label class="form-label" for="dataInicial">Data Inicial:</label>
+                            <input type="date" class="form-control" id="dataInicial" required>
+                            <label class="form-label" for="dataFinal">Data Final:</label>
+                            <input type="date" class="form-control" id="dataFinal" required>
+                            <label class="form-label" for="statusPedido">Status do Pedido:</label>
+                            <div class="select">
+                                <div id="status-select" class="category-select-box">Selecione o(s) status</div>
+                                <ul id="status-options" class="options-list"></ul>
+                            </div>
+                            <small class="text-muted" style="margin-bottom:10px;display:block;">Você pode selecionar mais de um status.</small>
+                            <label class="form-label" for="produto">Produto (opcional):</label>
+                            <div class="select">
+                                <div id="category-select" class="category-select-box">Selecione os produtos</div>
+                                <ul id="options" class="options-list"></ul>
+                            </div>
+                            <small class="text-muted" style="margin-bottom:10px;display:block;">Você pode selecionar mais de um produto.</small>
+                            <button type="submit" class="btn-report">Exportar PDF</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal de troca de senha -->
+<div id="trocaSenhaModal" class="senha-modal">
+    <div class="senha-modal-content">
+        <h2 class="senha-modal-title" id="trocaSenhaTitulo">Troca de Senha Obrigatória</h2>
+        <span id="fecharModal" class="senha-modal-close" style="display: none;">&times;</span>
+        <p id="trocaSenhaDescricao">Por motivos de segurança, você precisa alterar sua senha padrão.</p>
+        <form id="trocaSenhaForm">
+            <div class="senha-form-group">
+                <label for="senhaAtual">Senha Atual:</label>
+                <input type="password" id="senhaAtual" required>
+            </div>
+            <div class="senha-form-group">
+                <label for="novaSenha">Nova Senha:</label>
+                <input type="password" id="novaSenha" required>
+            </div>
+            <div class="senha-form-group">
+                <label for="confirmaSenha">Confirme a Nova Senha:</label>
+                <input type="password" id="confirmaSenha" required>
+            </div>
+            <div class="senha-form-error" id="senhaError">
+                As senhas não correspondem ou não atendem aos requisitos mínimos.
+            </div>
+            <div class="senha-form-buttons">
+                <button type="submit" class="senha-form-btn">Alterar Senha</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/api.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.7.0/jspdf.plugin.autotable.min.js"></script>
+<script src="js/admin-report.js"></script>
+<script>
+// Padronizar JS do modal de senha igual ao dashboard
+// Função para verificar se a senha é padrão
+function verificarSenhaPadrao(admin) {
+    fetch(`${API_BASE_URL}/admin/verificar-senha-padrao`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${admin.token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.senhaPadrao) {
+                const modal = document.getElementById('trocaSenhaModal');
+                modal.style.display = 'block';
+                document.getElementById('trocaSenhaTitulo').textContent = 'Troca de Senha Obrigatória';
+                document.getElementById('trocaSenhaDescricao').textContent = 'Por motivos de segurança, você precisa alterar sua senha padrão.';
+                document.getElementById('fecharModal').style.display = 'none';
+                window.addEventListener('beforeunload', function (e) {
+                    if (modal.style.display === 'block') {
+                        e.preventDefault();
+                        e.returnValue = 'É necessário trocar a senha antes de sair da página.';
+                        return e.returnValue;
+                    }
+                });
+                const menuLinks = document.querySelectorAll('.admin-sidebar a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', function (e) {
+                        if (modal.style.display === 'block') {
+                            e.preventDefault();
+                            mostrarPopup('É necessário trocar a senha antes de navegar para outra página.');
+                        }
+                    });
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao verificar senha:', error);
+        });
+}
+function adicionarEventoAlterarSenha() {
+    var btn = document.getElementById('alterar-senha-btn');
+    if (btn) {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('trocaSenhaTitulo').textContent = 'Alterar Senha';
+            document.getElementById('trocaSenhaDescricao').textContent = 'Preencha os campos abaixo para alterar sua senha.';
+            document.getElementById('fecharModal').style.display = 'block';
+            document.getElementById('trocaSenhaModal').style.display = 'block';
+            document.getElementById('senhaAtual').value = '';
+            document.getElementById('novaSenha').value = '';
+            document.getElementById('confirmaSenha').value = '';
+            document.getElementById('senhaError').style.display = 'none';
+        });
+    }
+}
+document.addEventListener('DOMContentLoaded', function () {
+    if (!SessionManager.isAdminLogado()) {
+        window.location.href = 'login.html';
+    } else {
+        const admin = SessionManager.obterAdmin();
+        verificarSenhaPadrao(admin);
+        adicionarEventoAlterarSenha();
+        document.getElementById('fecharModal').addEventListener('click', function () {
+            document.getElementById('trocaSenhaModal').style.display = 'none';
+        });
+        document.getElementById('trocaSenhaForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const senhaAtual = document.getElementById('senhaAtual').value;
+            const novaSenha = document.getElementById('novaSenha').value;
+            const confirmaSenha = document.getElementById('confirmaSenha').value;
+            if (novaSenha !== confirmaSenha) {
+                document.getElementById('senhaError').textContent = 'As senhas não correspondem.';
+                document.getElementById('senhaError').style.display = 'block';
+                return;
+            }
+            if (novaSenha === 'admin' || novaSenha === 'admin1234') {
+                document.getElementById('senhaError').textContent = 'A nova senha não pode ser igual à senha padrão';
+                document.getElementById('senhaError').style.display = 'block';
+                return;
+            }
+            if (novaSenha.length < 6) {
+                document.getElementById('senhaError').textContent = 'A nova senha deve ter pelo menos 6 caracteres';
+                document.getElementById('senhaError').style.display = 'block';
+                return;
+            }
+            const admin = SessionManager.obterAdmin();
+            fetch(`${API_BASE_URL}/admin/alterar-senha`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${admin.token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    senhaAtual: senhaAtual,
+                    novaSenha: novaSenha
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => {
+                            throw new Error(data.mensagem || 'Senha atual incorreta');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.sucesso) {
+                        document.getElementById('trocaSenhaModal').style.display = 'none';
+                        mostrarPopup('Senha alterada com sucesso!');
+                    } else {
+                        document.getElementById('senhaError').textContent = data.mensagem || 'Erro ao alterar senha';
+                        document.getElementById('senhaError').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('senhaError').textContent = error.message;
+                    document.getElementById('senhaError').style.display = 'block';
+                });
+        });
+    }
+});
+</script>
+</body>
+</html> 

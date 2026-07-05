@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="bordados, produtos bordados, mesa, banho, corporativo, uniformes, toalhas, panos de prato" />
+  <meta name="description" content="Acesse seu perfil de cliente para visualizar seus dados e gerenciar suas informações." />
+  <meta name="author" content="Célia Bordados" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <title>Perfil do Cliente</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <!-- page backgrounds -->
+  <link href="css/page-backgrounds.css" rel="stylesheet" />
+  <style>
+    .profile-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      background-color: #f16179;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+    }
+    
+    .profile-avatar i {
+      font-size: 40px;
+      color: white;
+    }
+    
+    .profile-name {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .profile-email {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    .profile-section {
+      margin-bottom: 30px;
+    }
+    
+    .profile-section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    
+    .profile-info-item {
+      margin-bottom: 15px;
+    }
+    
+    .profile-info-label {
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    
+    .profile-info-value {
+      background-color: #f9f9f9;
+      padding: 12px 15px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    
+    .btn-logout {
+      background-color: #f16179;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-logout:hover {
+      background-color: #e04d67;
+    }
+    
+    .profile-buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+    
+    .profile-section {
+      padding: 60px 0;
+    }
+    
+    .heading_container {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Div de fundo específica para a página de perfil -->
+  <div class="page-background profile-background"></div>
+  
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/celiabordadoslogo.png" alt="Célia Bordados Logo" class="logo-img">
+          </a>
+          <!--<div class="admin-login-container">
+            <a href="#" class="admin-login-btn" onclick="toggleLoginModal()">
+              <i class="fas fa-user"></i>
+            </a>
+          </div>-->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""></span>
+          </button>
+
+          <div class="collapse navbar-collapse innerpage_navbar" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">INÍCIO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Vitrine</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="why.html">Sobre Nós</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contato</a>
+              </li>
+            </ul>
+            <div class="user_option">
+              <a href="https://wa.me/5531988116773" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- profile section -->
+  <section class="profile-section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>Meu Perfil</h2>
+        <p>Visualize e gerencie suas informações pessoais</p>
+      </div>
+      
+      <div class="profile-container">
+        <div class="profile-header">
+          <div class="profile-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div>
+            <h3 class="profile-name" id="profileName">Carregando...</h3>
+            <p class="profile-email" id="profileEmail">Carregando...</p>
+          </div>
+        </div>
+        
+        <div class="profile-section">
+          <h4 class="profile-section-title">Informações Pessoais</h4>
+          
+          <div class="profile-info-item">
+            <div class="profile-info-label">E-mail</div>
+            <div class="profile-info-value" id="userEmail">Carregando...</div>
+          </div>
+        </div>
+        
+        <div class="profile-section">
+          <h4 class="profile-section-title">Endereço</h4>
+          
+          <div class="profile-info-item">
+            <div class="profile-info-label">Endereço Completo</div>
+            <div class="profile-info-value" id="userAddress">Carregando...</div>
+          </div>
+        </div>
+        
+        <div class="profile-buttons">
+          <button class="btn-logout" id="btnLogout">Sair</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end profile section -->
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="info_logo">
+        <h2>Célia Bordados</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Sobre Nós</h5>
+          <p>Somos especializados em bordados personalizados para diversas ocasiões. Nossos produtos são feitos com muito carinho e atenção aos detalhes.</p>
+        </div>
+        <div class="col-md-3">
+          <h5>Produtos</h5>
+          <ul>
+            <li><a href="shop.html">Toalhas Bordadas</a></li>
+            <li><a href="shop.html">Panos de Prato</a></li>
+            <li><a href="shop.html">Kits para Bebê</a></li>
+            <li><a href="shop.html">Uniformes</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Links Úteis</h5>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="shop.html">Vitrine</a></li>
+            <li><a href="why.html">Sobre Nós</a></li>
+            <li><a href="contact.html">Contato</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <div class="social_box">
+            <h5>Siga-nos</h5>
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5531988116773"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>&copy; <span id="displayYear"></span> Todos os direitos reservados | Célia Bordados</p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.js"></script>
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
+  <script>
+    // Verificar se o usuário está logado - removendo redirecionamento forçado
+    /*if (!localStorage.getItem("isLoggedIn")) {
+      window.location.href = "user-login.html";
+    }*/
+    
+    // Exibir ano atual no footer
+    document.getElementById("displayYear").textContent = new Date().getFullYear();
+    
+    // Removendo as funções relacionadas ao modal de login
+    /*
+    // Função para alternar a exibição do modal de login
+    function toggleLoginModal() {
+      document.getElementById("loginModal").classList.toggle("show-modal");
+    }
+    
+    // Fechar modal ao clicar fora dele
+    window.onclick = function(event) {
+      var modal = document.getElementById("loginModal");
+      if (event.target == modal) {
+        toggleLoginModal();
+      }
+    }
+    */
+    
+    // Carregar dados do usuário
+    document.addEventListener("DOMContentLoaded", function() {
+      const userData = JSON.parse(localStorage.getItem("userData"));
+      
+      if (userData) {
+        // Preencher os dados do perfil
+        document.getElementById("profileName").textContent = userData.nome || "Cliente";
+        document.getElementById("profileEmail").textContent = userData.email;
+        document.getElementById("userEmail").textContent = userData.email;
+        document.getElementById("userAddress").textContent = userData.endereco || userData.address || "Não informado";
+      } else {
+        // Exibir mensagem para usuário não logado em vez de redirecionar
+        document.getElementById("profileName").textContent = "Visitante";
+        document.getElementById("profileEmail").textContent = "Faça login para ver seu email";
+        document.getElementById("userEmail").textContent = "Faça login para ver seu email";
+        document.getElementById("userAddress").textContent = "Faça login para ver seu endereço";
+        
+        // Mostrar botão de login em vez de logout
+        const btnLogout = document.getElementById("btnLogout");
+        btnLogout.textContent = "Fazer Login";
+        btnLogout.addEventListener("click", function() {
+          window.location.href = "login.html";
+        });
+        return; // Não configurar o botão de logout
+      }
+      
+      // Configurar botão de logout
+      document.getElementById("btnLogout").addEventListener("click", function() {
+        // Chamar o endpoint de logout no backend
+        fetch('http://localhost:8080/api/clientes/logout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            // Limpar dados do localStorage
+            localStorage.removeItem("userData");
+            localStorage.removeItem("isLoggedIn");
+            // Redirecionar para a página inicial
+            window.location.href = "login.html";
+          } else {
+            console.error('Erro ao fazer logout');
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao fazer logout:', error);
+          // Mesmo com erro, limpar dados locais e redirecionar
+          localStorage.removeItem("userData");
+          localStorage.removeItem("isLoggedIn");
+          window.location.href = "login.html";
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
